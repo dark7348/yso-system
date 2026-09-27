@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none';script-src 'self' https://challenges.cloudflare.com 'unsafe-inline';style-src 'unsafe-inline';img-src data:;frame-src https://challenges.cloudflare.com;connect-src 'self' https://SEU-PROJETO.functions.supabase.co https://users.roblox.com;base-uri 'none';form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Yso System</title>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<style>
+:root{--bg:#080a09;--pn:#111613;--p2:#19211d;--ln:#233029;--rd:#12864a;--r2:#22c55e;--tx:#eef2ef;--mt:#8b978f;color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--tx);font:15px/1.55 Bahnschrift,"Segoe UI",system-ui,sans-serif}
+h1{font-size:32px;line-height:1.15;font-weight:800;margin-bottom:6px}h2{font-size:20px;font-weight:700;margin-bottom:10px}h3{font-size:15px;color:var(--r2);margin:0 0 10px}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--r2);outline-offset:2px}
+[hidden]{display:none!important}
+#sh{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+aside{background:var(--pn);border-right:1px solid var(--ln);padding:22px 12px;display:flex;flex-direction:column;gap:22px;position:sticky;top:0;height:100vh}
+.brand{font-size:22px;font-weight:800;padding:0 10px}.brand b{color:var(--r2)}.brand small{display:block;font-size:12px;font-weight:400;color:var(--mt)}
+nav{display:flex;flex-direction:column;gap:2px;flex:1}
+nav button{text-align:left;background:none;border:0;border-left:3px solid transparent;border-radius:0 4px 4px 0;padding:10px 12px;color:var(--mt);cursor:pointer}
+nav button:hover{background:var(--p2);color:var(--tx)}
+nav button[aria-current=page]{background:var(--p2);color:var(--tx);border-left-color:var(--r2);font-weight:600}
+#who{display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--ln);padding:14px 10px 0}
+main{padding:34px clamp(16px,4vw,52px) 80px;max-width:1120px;width:100%}
+body[data-tela=login] #sh{display:block}body[data-tela=login] aside{display:none}
+.card{background:var(--pn);border:1px solid var(--ln);border-radius:6px;padding:20px;margin-bottom:16px}
+.card:not(.login):not(.hero){border-top:2px solid var(--rd)}
+.hero{display:flex;gap:18px;align-items:center;border-left:4px solid var(--rd)}
+.av{width:64px;height:64px;border-radius:6px;background:var(--rd);display:grid;place-items:center;font-size:30px;font-weight:800}
+.mt{color:var(--mt)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px}
+.kv span{display:block;font-size:13px;color:var(--mt)}.kv b{font-size:17px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+label{display:block;margin:14px 0 4px;color:var(--mt);font-size:14px}
+input,select,textarea{width:100%;background:var(--p2);border:1px solid var(--ln);border-radius:4px;padding:10px 12px;margin-top:4px}
+input:focus,select:focus,textarea:focus{border-color:var(--r2)}
+.btn{background:var(--rd);border:0;border-radius:4px;padding:10px 20px;font-weight:700;cursor:pointer;margin-top:14px;width:auto}
+.btn:hover{background:var(--r2)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.ghost{background:none;border:1px solid var(--ln)}.ghost:hover{background:var(--p2);border-color:var(--r2)}
+.tag{display:inline-block;background:var(--p2);border:1px solid var(--ln);border-radius:999px;padding:2px 12px;margin:0 6px 6px 0;font-size:13px}
+.tabs{display:flex;gap:6px;margin-bottom:16px}
+.tabs button{flex:1;background:var(--p2);border:1px solid var(--ln);padding:10px;cursor:pointer;border-radius:4px}
+.tabs button[aria-selected=true]{background:var(--rd);border-color:var(--rd);font-weight:700}
+.tw{overflow-x:auto;padding:0}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--ln);vertical-align:top}
+th{color:var(--mt);font-weight:600;font-size:13px;background:var(--p2)}
+tbody tr:hover{background:var(--p2)}
+.opt{display:block;width:100%;text-align:left;background:var(--p2);border:1px solid var(--ln);padding:10px 12px;margin-top:6px;cursor:pointer;border-radius:4px}
+.opt:hover{border-color:var(--r2)}
+.login{max-width:440px;margin:8vh auto 0;padding:34px;border-top:4px solid var(--rd)}
+.code{font:700 28px Consolas,monospace;letter-spacing:.1em;color:var(--r2);margin:12px 0}
+.aviso{color:var(--r2);margin:12px 0}
+details.card summary{cursor:pointer;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.toast{background:var(--pn);border:1px solid var(--ln);border-left:4px solid var(--tx);padding:12px 16px;margin-top:8px;border-radius:4px}
+.toast.err{border-left-color:var(--r2)}
+#toasts{position:fixed;right:14px;bottom:14px;z-index:20;max-width:340px}
+dialog{background:var(--pn);color:var(--tx);border:1px solid var(--rd);border-radius:6px;padding:24px;max-width:400px;margin:auto}
+dialog::backdrop{background:rgba(0,0,0,.75)}
+@media(max-width:760px){#sh{display:block}aside{position:sticky;height:auto;flex-direction:row;align-items:center;gap:8px;padding:8px;z-index:5;border-right:0;border-bottom:2px solid var(--rd)}.brand small,#who span{display:none}.brand{padding:0 4px}nav{flex-direction:row;overflow-x:auto}nav button{border-left:0;border-bottom:3px solid transparent;white-space:nowrap;border-radius:0}nav button[aria-current=page]{border-bottom-color:var(--r2)}#who{border:0;padding:0}.hero{flex-direction:column;align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="sh"><aside><div class="brand">Yso <b>System</b><small>Exército Brasileiro</small></div><nav id="nav"></nav><div id="who"></div></aside><main id="app"></main></div>
+<div id="toasts"></div>
+<dialog id="dlg"><div id="dc"></div></dialog>
+<script>
+"use strict";
+const CFG=Object.freeze({apiUrl:"https://SEU-PROJETO.functions.supabase.co/api",turnstileSiteKey:"0x4AAAAAAFCtTM6iRtvmSMdn",inativoMs:1200000});
+const $=s=>document.querySelector(s);
+const esc=v=>String(v??"").replace(/[&<>"'`]/g,c=>"&#"+c.charCodeAt(0)+";");
+class Safe{constructor(t){this.t=t}}
+const part=v=>v instanceof Safe?v.t:Array.isArray(v)?v.map(part).join(""):esc(v);
+const H=(s,...v)=>new Safe(s.reduce((a,x,i)=>a+x+(i<v.length?part(v[i]):""),""));
+const pinta=(el,s)=>{el.innerHTML=s.t};
+const S={u:null,tk:null,pg:"perfil",n:0,busy:false,alvo:null,cat:"Promoções",p:{efetivo:{p:1,t:0,s:30,q:"",f:""},auditoria:{p:1,t:0,s:50}}};
+const PT={"Promoção Normal":"promover_normal","Promoção Atípica":"promover_atipica","Advertência":"advertir","Rebaixamento":"rebaixar","Exílio":"exilar","Black List":"blacklist","Anular Atividade":"anular"};
+const PAT=["Recruta","Soldado","Cabo","Terceiro Sargento","Segundo Sargento","Primeiro Sargento","Subtenente","Cadete","Aspirante à Oficial","Segundo Tenente","Primeiro Tenente","Capitão","Major","Tenente Coronel","Coronel","General de Brigada","General de Divisão","General de Exército","Subcomandante","Comandante"];
+const has=p=>!!S.u&&Array.isArray(S.u.permissoes)&&S.u.permissoes.includes(p);
+const lista=a=>Array.isArray(a)?a:[];
+const limpa=s=>String(s??"").replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g,"").trim();
+const ok={user:s=>/^[A-Za-z0-9_]{3,20}$/.test(s),txt:(s,a,b)=>s.length>=a&&s.length<=b,id:s=>/^[\w-]{1,64}$/.test(s),tk:s=>/^[a-f0-9]{64}$/.test(s)};
+const lim=(n,ms)=>{let t=[];return()=>{const a=Date.now();t=t.filter(x=>a-x<ms);if(t.length>=n)return Math.ceil((ms-(a-t[0]))/1000);t.push(a);return 0}};
+const limAcao=lim(1,3000),limUso=lim(1,1500);
+const vazio=m=>H`<div class="card"><h2>Sem dados</h2><p class="mt">${m}</p></div>`;
+const kv=(k,v)=>H`<div class="kv"><span>${k}</span><b>${v??"—"}</b></div>`;
+const tabela=(c,r)=>r.length?H`<div class="tw card"><table><thead><tr>${c.map(x=>H`<th>${x[0]}</th>`)}</tr></thead><tbody>${r.map(l=>H`<tr>${c.map(x=>H`<td>${x[1](l)}</td>`)}</tr>`)}</tbody></table></div>`:vazio("Nada registrado ainda.");
+const pag=k=>{const x=S.p[k];return H`<div class="row"><button class="btn ghost" data-a="pag" data-v="-1">Anterior</button><span class="mt">Página ${x.p} de ${Math.max(1,Math.ceil(x.t/x.s))}</span><button class="btn ghost" data-a="pag" data-v="1">Próxima</button></div>`};
+function toast(m,e){const d=document.createElement("div");d.className="toast"+(e?" err":"");d.textContent=m;$("#toasts").append(d);setTimeout(()=>d.remove(),4500)}
+async function API(path,o={}){
+ const r=await fetch(CFG.apiUrl+path,{method:o.method||"GET",cache:"no-store",credentials:"omit",signal:AbortSignal.timeout(15000),headers:{"content-type":"application/json",...(S.tk?{authorization:"Bearer "+S.tk}:{})},body:o.body?JSON.stringify(o.body):undefined}).catch(()=>{throw new Error("Sem conexão com o servidor.")});
+ const d=await r.json().catch(()=>({}));
+ if(!r.ok){if(r.status===401&&S.tk)sair(true);throw new Error(String(d.erro||"Erro na requisição.").slice(0,200))}
+ return d}
+let tm;
+function vigia(){clearTimeout(tm);if(S.u)tm=setTimeout(()=>sair(true),CFG.inativoMs)}
+["click","keydown","pointerdown"].forEach(e=>addEventListener(e,vigia,{passive:true}));
+function sair(auto){sessionStorage.removeItem("yso");if(S.tk)API("/auth/logout",{method:"POST"}).catch(()=>{});S.tk=null;S.u=null;S.alvo=null;clearTimeout(tm);login(auto?"Sessão encerrada. Entre novamente.":"")}
+function login(msg){
+ document.body.dataset.tela="login";
+ $("#nav").innerHTML="";$("#who").innerHTML="";
+ pinta($("#app"),H`<section class="card login"><h1>Yso System</h1><p class="mt">Exército do Yso — DELTA</p>${msg?H`<p class="aviso">${msg}</p>`:""}<div class="tabs" style="margin-top:18px"><button data-a="tab" data-v="roblox">Roblox</button><button data-a="tab" data-v="bio">Bio Code</button></div><div id="lg"></div></section>`);
+ aba("roblox")}
+function aba(v){
+ document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===v));
+ pinta($("#lg"),v==="roblox"?H`<p>Entre com sua conta Roblox. O servidor confirma quem você é e qual sua patente no grupo.</p><button class="btn" data-a="roblox">Entrar com Roblox</button>`:H`<label>Usuário do Roblox<input id="bu" maxlength="20" autocomplete="off"></label><div id="ts" class="cf-turnstile" data-sitekey="${CFG.turnstileSiteKey}" data-theme="dark" style="margin-top:10px"></div><button class="btn" data-a="bio">Gerar código</button><div id="bc"></div>`)}
+async function bio(){
+ const u=limpa($("#bu").value);if(!ok.user(u))return toast("Use de 3 a 20 letras, números ou _.",1);
+ const tsr=window.turnstile?.getResponse?.("#ts")||"";
+ if(!tsr)return toast("Confirme que você não é um robô.",1);
+ try{const d=await API("/auth/biocode/iniciar",{method:"POST",body:{username:u,turnstileToken:tsr}});
+  if(!ok.id(String(d.robloxUserId))||!/^YSO-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(d.code))throw new Error("Resposta inválida do servidor.");
+  pinta($("#bc"),H`<p>Cole este código na descrição do seu perfil Roblox:</p><p class="code">${d.code}</p><p class="mt">Confirmando sozinho. O código vale por 5 minutos.</p>`);
+  sonda(d.robloxUserId,Date.now()+300000)}catch(e){toast(e.message,1);window.turnstile?.reset?.("#ts")}}
+async function sonda(id,fim){
+ if(!$("#bc"))return;if(Date.now()>fim)return toast("Código expirado. Gere outro.",1);
+ try{const d=await API("/auth/biocode/status/"+encodeURIComponent(id));
+  if(d.verificado&&ok.tk(String(d.token)))return entrar(d.token);
+  if(d.expirado)return toast("Código expirado. Gere outro.",1)}catch(e){return toast(e.message,1)}
+ setTimeout(()=>sonda(id,fim),4000)}
+async function entrar(t){
+ S.tk=t;
+ try{const d=await API("/auth/me"),m=d.militar;
+  if(!m||!ok.id(String(m.id))||!Array.isArray(m.permissoes))throw new Error("Resposta inválida do servidor.");
+  S.u=m;sessionStorage.setItem("yso",t);vigia();ir("perfil")}catch(e){S.tk=null;sessionStorage.removeItem("yso");login(e.message)}}
+const PGS=[["perfil","Perfil",()=>1],["atividades","Atividades",()=>Object.values(PT).some(has)],["registros","Registros",()=>1],["efetivo","Efetivo",()=>1],["orgs","Organizações",()=>1],["auditoria","Auditoria",()=>has("config_sistema")],["config","Configurações",()=>has("config_sistema")]];
+function shell(){
+ pinta($("#nav"),H`${PGS.filter(p=>p[2]()).map(p=>H`<button data-a="pg" data-v="${p[0]}" aria-current="${p[0]===S.pg?"page":"false"}">${p[1]}</button>`)}`);
+ pinta($("#who"),H`<span class="mt">${S.u.nome}</span><button class="btn ghost" style="margin:0" data-a="sair">Sair</button>`)}
+async function ir(pg){
+ if(!S.u)return;
+ const f=PGS.find(p=>p[0]===pg);if(!f||!f[2]())return;
+ document.body.dataset.tela="app";S.pg=pg;const n=++S.n;shell();
+ pinta($("#app"),H`<p class="mt">Carregando…</p>`);
+ try{const v=await VIEWS[pg]();if(n!==S.n)return;pinta($("#app"),v);if(POS[pg])POS[pg]()}
+ catch(e){if(n===S.n)pinta($("#app"),vazio(e.message))}}
+async function vPerfil(){
+ const d=await API("/auth/me");S.u=d.militar;const m=S.u;
+ const t=lista(await API("/treinos?militar="+encodeURIComponent(m.nome)).catch(()=>[]));
+ return H`<div class="card hero"><div class="av">${String(m.nome).slice(0,1).toUpperCase()}</div><div><h1>${m.nome}</h1><p class="mt">${m.patente||"Aguardando sincronização"}</p></div></div>
+<div class="card"><div class="grid">${kv("Entrada",m.entrada)}${kv("Advertências gerais",m.advertencias_gerais)}${kv("Situação",m.blacklist?"Black List":m.exiliado?"Exilado":"Ativo")}</div></div>
+<div class="card"><h3>Descrição</h3><textarea id="ds" maxlength="200" rows="4">${m.descricao}</textarea><button class="btn" data-a="descr">Salvar descrição</button></div>
+<div class="card"><h3>Organizações</h3>${lista(m.organizacoes).map(o=>H`<span class="tag">${o.organizacao_sigla}: ${o.cargo}</span>`)}</div>
+<div class="card"><h3>Permissões</h3>${m.permissoes.map(p=>H`<span class="tag">${p}</span>`)}</div>
+<h3>Treinos</h3>${tabela([["Data",x=>x.data],["Resultado",x=>x.resultado]],t)}`}
+async function vAtiv(){
+ const orgs=lista(await API("/organizacoes")).filter(o=>o.ativa);
+ const tp=Object.keys(PT).filter(k=>has(PT[k]));
+ return H`<div class="card"><h2>Executar atividade</h2>
+<label>Organização<select id="og">${orgs.map(o=>H`<option>${o.sigla}</option>`)}</select></label>
+<label>Ação<select id="tp">${tp.map(k=>H`<option>${k}</option>`)}</select></label>
+<label>Detalhe<select id="st"></select></label>
+<label>Militar<input id="mq" maxlength="40" placeholder="Nome ou ID"></label><button class="btn ghost" data-a="buscar">Buscar</button>
+<div id="mr"></div><p id="ms" class="mt">${S.alvo?"Selecionado: "+S.alvo.nome:"Nenhum militar selecionado."}</p>
+<label>Registro a anular<input id="an" maxlength="12" placeholder="R-1001"></label>
+<label>Motivo<textarea id="mo" maxlength="300" rows="3"></textarea></label>
+<button class="btn" data-a="exec">Executar</button></div>`}
+function subs(){
+ if(!$("#tp"))return;
+ const t=$("#tp").value,o=t==="Advertência"?["Geral","Específica"]:t==="Black List"?["Temporária","Permanente"]:[];
+ pinta($("#st"),H`${o.map(x=>H`<option>${x}</option>`)}`);
+ $("#st").parentElement.hidden=!o.length;$("#an").parentElement.hidden=t!=="Anular Atividade";$("#mo").parentElement.hidden=t==="Anular Atividade"}
+async function buscar(){
+ const q=limpa($("#mq").value);if(!ok.txt(q,2,40))return toast("Digite de 2 a 40 caracteres.",1);
+ const w=limUso();if(w)return toast("Aguarde "+w+"s.",1);
+ try{const d=await API("/militares?search="+encodeURIComponent(q));
+  pinta($("#mr"),H`${lista(d.militares).slice(0,8).map(m=>H`<button class="opt" data-a="alvo" data-id="${m.id}" data-n="${m.nome}">${m.nome} (${m.patente||"sem patente"})</button>`)}`)}catch(e){toast(e.message,1)}}
+function confirma(txt){return new Promise(r=>{const d=$("#dlg");pinta($("#dc"),H`<h2>Confirmar ação</h2><p>${txt}</p><div class="row"><button class="btn ghost" data-a="dlg" data-v="n">Cancelar</button><button class="btn" data-a="dlg" data-v="s">Confirmar</button></div>`);d.onclose=()=>r(d.returnValue==="s");d.returnValue="n";d.showModal()})}
+async function exec(){
+ const t=$("#tp").value,mo=limpa($("#mo").value),an=limpa($("#an").value),og=$("#og").value,an_=t==="Anular Atividade";
+ if(!has(PT[t]))return toast("Sem permissão para esta ação.",1);
+ if(!S.alvo&&!an_)return toast("Selecione um militar.",1);
+ if(an_?!/^R-\w{4,}$/i.test(an):!ok.txt(mo,5,300))return toast(an_?"Informe o registro no formato R-1001.":"Motivo de 5 a 300 caracteres.",1);
+ if(!await confirma(t+(S.alvo?" para "+S.alvo.nome:"")+"?"))return;
+ if(S.busy)return;const w=limAcao();if(w)return toast("Aguarde "+w+"s.",1);
+ S.busy=true;
+ try{await API("/atividades/executar",{method:"POST",body:{tipo:t,militarId:S.alvo?.id,motivo:an_?undefined:mo,subtipo:$("#st").parentElement.hidden?undefined:$("#st").value,anularAlvoId:an_?an:undefined,organizacao:og}});toast("Atividade executada.");S.alvo=null;ir("atividades")}
+ catch(e){toast(e.message,1)}finally{S.busy=false}}
+async function vReg(){
+ const c=S.cat,CAT={"Promoções":["Promoção Normal","Promoção Atípica"],"Disciplinar":["Advertência","Rebaixamento","Exílio","Black List","Anular Atividade"]};
+ const tr=c==="Treinos",rows=tr?lista(await API("/treinos")):lista(await API("/atividades")).filter(r=>CAT[c].includes(r.tipo));
+ const cols=tr?[["Data",x=>x.data],["Militar",x=>x.militar],["Resultado",x=>x.resultado]]:[["Data",x=>new Date(x.criado_em).toLocaleString("pt-BR")],["Registro",x=>x.id],["Tipo",x=>x.tipo],["Militar",x=>x.militar],["Executor",x=>x.executor],["Motivo",x=>x.motivo],["Status",x=>x.status]];
+ return H`<div class="tabs">${["Promoções","Disciplinar","Treinos"].map(k=>H`<button data-a="cat" data-v="${k}" aria-selected="${k===c}">${k}</button>`)}</div>${tabela(cols,rows)}`}
+async function vEf(){
+ const e=S.p.efetivo,d=await API("/efetivo?"+new URLSearchParams({search:e.q,filtro:e.f,page:e.p}));
+ e.t=Number(d.total)||0;
+ return H`<div class="card row"><input id="eq" maxlength="40" value="${e.q}" placeholder="Nome ou ID" style="flex:1"><button class="btn" style="margin:0" data-a="ef">Filtrar</button></div>
+${tabela([["Nome",m=>m.displayName],["Patente",m=>m.patente],["Vínculo",m=>m.verificado?"Verificado":"Não verificado"]],lista(d.membros))}${pag("efetivo")}`}
+async function vOrg(){
+ const o=lista(await API("/organizacoes"));
+ return o.length?H`${o.map(x=>H`<details class="card"><summary><b>${x.sigla}</b> ${x.nome} <span class="tag">${x.ativa?"Ativa":"Inativa"}</span></summary><p class="mt">${x.tipo}</p><div>${lista(x.cargos).map(c=>H`<span class="tag">${c}</span>`)}</div>${has("config_sistema")?H`<button class="btn ghost" data-a="org" data-s="${x.sigla}" data-v="${!x.ativa}">${x.ativa?"Desativar":"Ativar"}</button>`:""}</details>`)}`:vazio("Nenhuma organização cadastrada.")}
+async function vAud(){
+ const x=S.p.auditoria,d=await API("/auditoria?"+new URLSearchParams({page:x.p}));x.t=Number(d.total)||0;
+ return H`${tabela([["Data",r=>new Date(r.criado_em).toLocaleString("pt-BR")],["Tipo",r=>r.tipo],["Ator",r=>r.ator],["Alvo",r=>r.alvo],["Detalhe",r=>r.detalhe],["Resultado",r=>r.resultado],["",r=>H`<button class="btn ghost" style="margin:0" data-a="arq" data-v="${r.id}">Arquivar</button>`]],lista(d.registros))}${pag("auditoria")}`}
+async function vCfg(){
+ const org=S.cfgOrg||"YSO";
+ const [c,r]=await Promise.all([API("/configuracoes/cdp"),API("/configuracoes/roblox-cargos?org="+encodeURIComponent(org))]);
+ const dc=Object.fromEntries(lista(c).map(x=>[x.patente,x.minutos])),rc=Object.fromEntries(lista(r).map(x=>[x.patente,x.role_id]));
+ return H`<div class="tabs">${["YSO","SGEx","CEx"].map(o=>H`<button data-a="cfgorg" data-v="${o}" aria-selected="${o===org}">${o}</button>`)}</div>
+<h2>CDP e cargos do Roblox — ${org}</h2>${tabela([["Patente",p=>p],["CDP (minutos)",p=>H`<input type="number" min="0" max="525600" data-d value="${dc[p]??""}">`],["Role ID",p=>H`<input inputmode="numeric" maxlength="20" data-r value="${rc[p]??""}">`],["",p=>H`<button class="btn ghost" style="margin:0" data-a="cfg" data-v="${PAT.indexOf(p)}">Salvar</button>`]],PAT)}
+<div class="card"><h3>Atribuir cargo</h3><label>Organização<select id="cgorg"><option>SGEx</option><option>CEx</option><option>YSO</option></select></label><label>ID do militar<input id="cgid" maxlength="64"></label><label>Cargo<input id="cgcargo" maxlength="60"></label><button class="btn" data-a="cargo">Atribuir</button></div>`}
+const VIEWS={perfil:vPerfil,atividades:vAtiv,registros:vReg,efetivo:vEf,orgs:vOrg,auditoria:vAud,config:vCfg};
+const POS={atividades:subs,efetivo:()=>{}};
+const ACT={
+ tab:(b,v)=>aba(v),
+ roblox:()=>location.assign(CFG.apiUrl+"/auth/login-roblox"),
+ bio,buscar,exec,
+ pg:(b,v)=>ir(v),
+ sair:()=>sair(false),
+ dlg:(b,v)=>$("#dlg").close(v),
+ cat:(b,v)=>{if(["Promoções","Disciplinar","Treinos"].includes(v)){S.cat=v;ir("registros")}},
+ alvo:b=>{if(!ok.id(b.dataset.id))return;S.alvo={id:b.dataset.id,nome:b.dataset.n};$("#ms").textContent="Selecionado: "+S.alvo.nome;$("#mr").innerHTML=""},
+ pag:(b,v)=>{const x=S.p[S.pg],n=x.p+Number(v);if(n<1||n>Math.max(1,Math.ceil(x.t/x.s)))return;x.p=n;ir(S.pg)},
+ ef:()=>{const q=limpa($("#eq").value);if(!ok.txt(q,0,40))return;const e=S.p.efetivo;e.q=q;e.p=1;ir("efetivo")},
+ descr:async()=>{
+  const w=limUso();if(w)return toast("Aguarde "+w+"s.",1);
+  const v=limpa($("#ds").value);if(!ok.txt(v,0,200))return toast("Máximo de 200 caracteres.",1);
+  try{await API("/militares/"+encodeURIComponent(S.u.id)+"/descricao",{method:"PUT",body:{descricao:v}});toast("Descrição salva.")}catch(e){toast(e.message,1)}},
+ org:async(b,v)=>{
+  if(!has("config_sistema")||!/^[\w-]{1,16}$/.test(b.dataset.s))return;
+  try{await API("/organizacoes/"+encodeURIComponent(b.dataset.s),{method:"PUT",body:{ativa:v==="true"}});ir("orgs")}catch(e){toast(e.message,1)}},
+ arq:async(b,v)=>{
+  if(!has("config_sistema")||!/^\d+$/.test(v))return;
+  if(!await confirma("Arquivar o registro "+v+"? Ele deixa de aparecer, mas não é apagado."))return;
+  try{await API("/auditoria/"+encodeURIComponent(v)+"/arquivar",{method:"POST"});toast("Registro arquivado.");ir("auditoria")}catch(e){toast(e.message,1)}},
+ cfg:async(b,v)=>{
+  if(!has("config_sistema"))return;const p=PAT[Number(v)];if(!p)return;
+  const tr=b.closest("tr"),d=tr.querySelector("[data-d]").value.trim(),r=tr.querySelector("[data-r]").value.trim();
+  if(!/^\d{1,6}$/.test(d)||Number(d)>525600)return toast("CDP: minutos de 0 a 525600.",1);
+  if(r&&!/^\d{1,20}$/.test(r))return toast("Role ID deve ter só números.",1);
+  const w=limUso();if(w)return toast("Aguarde "+w+"s.",1);
+  try{await API("/configuracoes/cdp/"+encodeURIComponent(p),{method:"PUT",body:{minutos:Number(d)}});await API("/configuracoes/roblox-cargos/"+encodeURIComponent(S.cfgOrg||"YSO")+"/"+encodeURIComponent(p),{method:"PUT",body:{roleId:r?Number(r):null}});toast(p+" salvo.")}catch(e){toast(e.message,1)}},
+ cfgorg:(b,v)=>{S.cfgOrg=v;ir("config")},
+ cargo:async()=>{
+  const id=limpa($("#cgid").value),cg=limpa($("#cgcargo").value),og=$("#cgorg").value;
+  if(!ok.id(id))return toast("ID do militar inválido.",1);
+  if(!ok.txt(cg,1,60))return toast("Cargo de 1 a 60 caracteres.",1);
+  const w=limUso();if(w)return toast("Aguarde "+w+"s.",1);
+  try{await API("/militares/"+encodeURIComponent(id)+"/cargo",{method:"PUT",body:{organizacao:og,cargo:cg}});toast("Cargo atribuído.")}catch(e){toast(e.message,1)}}
+};
+document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(b&&ACT[b.dataset.a])ACT[b.dataset.a](b,b.dataset.v)});
+document.addEventListener("change",e=>{if(e.target.id==="tp")subs()});
+addEventListener("error",()=>toast("Algo deu errado nesta tela. Tente atualizar a página.",1));
+addEventListener("unhandledrejection",()=>toast("Algo deu errado nesta tela. Tente atualizar a página.",1));
+addEventListener("offline",()=>toast("Sem conexão com a internet.",1));
+addEventListener("online",()=>toast("Conexão restabelecida."));
+(()=>{
+ const h=new URLSearchParams(location.hash.slice(1));
+ const t=h.get("token")||sessionStorage.getItem("yso"),er=h.get("loginError");
+ history.replaceState(null,"",location.pathname);
+ if(t&&ok.tk(t))entrar(t);else login(er?limpa(er).slice(0,200):"")
+})();
+</script>
+</body>
+</html>
